@@ -9,21 +9,25 @@
 /* Begin PBXBuildFile section */
 		EA9DC5AC27E7A45500A54109 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9DC5AB27E7A45500A54109 /* AppDelegate.swift */; };
 		EA9DC5AE27E7A45500A54109 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9DC5AD27E7A45500A54109 /* SceneDelegate.swift */; };
-		EA9DC5B027E7A45500A54109 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9DC5AF27E7A45500A54109 /* ViewController.swift */; };
+		EA9DC5B027E7A45500A54109 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9DC5AF27E7A45500A54109 /* SearchViewController.swift */; };
 		EA9DC5B327E7A45500A54109 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA9DC5B127E7A45500A54109 /* Main.storyboard */; };
 		EA9DC5B527E7A45700A54109 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA9DC5B427E7A45700A54109 /* Assets.xcassets */; };
 		EA9DC5B827E7A45700A54109 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA9DC5B627E7A45700A54109 /* LaunchScreen.storyboard */; };
+		EA9DC5C527E7A64500A54109 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9DC5C427E7A64500A54109 /* NetworkManager.swift */; };
+		EA9DC5C727E7A87800A54109 /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9DC5C627E7A87800A54109 /* HomeModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		EA9DC5A827E7A45500A54109 /* ArmutCloneApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArmutCloneApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA9DC5AB27E7A45500A54109 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EA9DC5AD27E7A45500A54109 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		EA9DC5AF27E7A45500A54109 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		EA9DC5AF27E7A45500A54109 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		EA9DC5B227E7A45500A54109 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EA9DC5B427E7A45700A54109 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EA9DC5B727E7A45700A54109 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EA9DC5B927E7A45700A54109 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EA9DC5C427E7A64500A54109 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		EA9DC5C627E7A87800A54109 /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +60,57 @@
 		EA9DC5AA27E7A45500A54109 /* ArmutCloneApp */ = {
 			isa = PBXGroup;
 			children = (
-				EA9DC5AB27E7A45500A54109 /* AppDelegate.swift */,
-				EA9DC5AD27E7A45500A54109 /* SceneDelegate.swift */,
-				EA9DC5AF27E7A45500A54109 /* ViewController.swift */,
+				EA9DC5C327E7A60A00A54109 /* Resources */,
+				EA9DC5C227E7A5FE00A54109 /* ViewControllers */,
+				EA9DC5C127E7A5F700A54109 /* Cells */,
+				EA9DC5C027E7A59A00A54109 /* Service */,
+				EA9DC5BF27E7A59300A54109 /* Model */,
 				EA9DC5B127E7A45500A54109 /* Main.storyboard */,
-				EA9DC5B427E7A45700A54109 /* Assets.xcassets */,
 				EA9DC5B627E7A45700A54109 /* LaunchScreen.storyboard */,
 				EA9DC5B927E7A45700A54109 /* Info.plist */,
 			);
 			path = ArmutCloneApp;
+			sourceTree = "<group>";
+		};
+		EA9DC5BF27E7A59300A54109 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EA9DC5C627E7A87800A54109 /* HomeModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		EA9DC5C027E7A59A00A54109 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				EA9DC5C427E7A64500A54109 /* NetworkManager.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		EA9DC5C127E7A5F700A54109 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		EA9DC5C227E7A5FE00A54109 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				EA9DC5AF27E7A45500A54109 /* SearchViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		EA9DC5C327E7A60A00A54109 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				EA9DC5B427E7A45700A54109 /* Assets.xcassets */,
+				EA9DC5AB27E7A45500A54109 /* AppDelegate.swift */,
+				EA9DC5AD27E7A45500A54109 /* SceneDelegate.swift */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,8 +184,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA9DC5B027E7A45500A54109 /* ViewController.swift in Sources */,
+				EA9DC5C527E7A64500A54109 /* NetworkManager.swift in Sources */,
+				EA9DC5B027E7A45500A54109 /* SearchViewController.swift in Sources */,
 				EA9DC5AC27E7A45500A54109 /* AppDelegate.swift in Sources */,
+				EA9DC5C727E7A87800A54109 /* HomeModel.swift in Sources */,
 				EA9DC5AE27E7A45500A54109 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
