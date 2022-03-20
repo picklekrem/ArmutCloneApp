@@ -18,13 +18,20 @@ class AllServicesTableViewCell: UITableViewCell {
     
 //    var allServicesData : ServicesModel?
     var allServicesData : [ServicesModel] = []
-    
+    var iconNameArray: [String] = ["tadilat", "temizlik", "nakliyat", "tamir", "ozel_ders", "saglik", "dugun", "diger"]
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         allServicesCollectionView.delegate = self
         allServicesCollectionView.dataSource = self
         allServicesCollectionView.register(ServicesCollectionViewCell.nib(), forCellWithReuseIdentifier: ServicesCollectionViewCell.identifier)
+    }
+    
+    func loadData(data : [ServicesModel]) {
+        allServicesData = data
+        DispatchQueue.main.async {
+            self.allServicesCollectionView.reloadData()
+        }
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -38,16 +45,20 @@ class AllServicesTableViewCell: UITableViewCell {
 extension AllServicesTableViewCell : UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 8
+        return allServicesData.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = allServicesCollectionView.dequeueReusableCell(withReuseIdentifier: ServicesCollectionViewCell.identifier, for: indexPath) as! ServicesCollectionViewCell
-//        cell.loadData(data: allServicesData[indexPath.row])
-        return cell
+        let serviceCell = allServicesCollectionView.dequeueReusableCell(withReuseIdentifier: ServicesCollectionViewCell.identifier, for: indexPath) as! ServicesCollectionViewCell
+        serviceCell.loadData(data: allServicesData[indexPath.row])
+        serviceCell.imageView.image = UIImage(named: iconNameArray[indexPath.row])
+        return serviceCell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 75, height: 75)
+        return CGSize(width: 80, height: 80)
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(allServicesData[indexPath.row].name)
     }
     
 }

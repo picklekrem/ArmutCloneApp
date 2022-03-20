@@ -62,6 +62,7 @@ extension SearchViewController : UITableViewDelegate, UITableViewDataSource {
         switch indexPath.row {
         case 0 :
             let headerCell = tableView.dequeueReusableCell(withIdentifier: HeaderTableViewCell.identifier, for: indexPath) as! HeaderTableViewCell
+            headerCell.selectionStyle = .none
             return headerCell
             
         case 1 :
@@ -69,11 +70,13 @@ extension SearchViewController : UITableViewDelegate, UITableViewDataSource {
             promotionCell.loadData(image: UIImage(named: "evlilik.png") ?? .strokedCheckmark,
                                    title: "FIRST TIME NEWLY WEDS",
                                    description: "WEDDING PHOTOGRAPHERS FROM 540TL")
+            promotionCell.selectionStyle = .none
             return promotionCell
             
         case 2 :
             let allServicesCell = tableView.dequeueReusableCell(withIdentifier: AllServicesTableViewCell.identifier, for: indexPath) as! AllServicesTableViewCell
-//            allServicesCell.allServicesData = allServicesData
+            allServicesCell.loadData(data: allServicesData)
+            allServicesCell.selectionStyle = .none
             return allServicesCell
             
         case 3 :
