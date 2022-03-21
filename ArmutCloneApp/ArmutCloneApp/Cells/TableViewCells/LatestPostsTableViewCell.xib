@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="LatestPostsTableViewCell" rowHeight="251" id="KGk-i7-Jjw" customClass="LatestPostsTableViewCell" customModule="ArmutCloneApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="379" height="251"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="379" height="251"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Latest from the blog" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YNn-zP-DwB">
+                        <rect key="frame" x="10" y="10" width="349" height="21"/>
+                        <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="20"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="wp1-Kt-Sb6">
+                        <rect key="frame" x="0.0" y="41" width="379" height="210"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="210" id="m8l-g7-PB4"/>
+                        </constraints>
+                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="dwH-iw-3yt">
+                            <size key="itemSize" width="128" height="128"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <connections>
+                            <outlet property="dataSource" destination="-1" id="hx4-er-2bt"/>
+                            <outlet property="delegate" destination="-1" id="BiZ-39-ZOZ"/>
+                        </connections>
+                    </collectionView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="wp1-Kt-Sb6" firstAttribute="top" secondItem="YNn-zP-DwB" secondAttribute="bottom" constant="10" id="16g-QO-uNW"/>
+                    <constraint firstAttribute="bottom" secondItem="wp1-Kt-Sb6" secondAttribute="bottom" id="AhK-tC-yb1"/>
+                    <constraint firstAttribute="trailing" secondItem="wp1-Kt-Sb6" secondAttribute="trailing" id="Mcp-Ft-kN1"/>
+                    <constraint firstItem="YNn-zP-DwB" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="PC2-i4-GoR"/>
+                    <constraint firstItem="wp1-Kt-Sb6" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="m8F-2N-WkJ"/>
+                    <constraint firstAttribute="trailing" secondItem="YNn-zP-DwB" secondAttribute="trailing" constant="20" id="qo7-Dj-jfy"/>
+                    <constraint firstItem="YNn-zP-DwB" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="y5s-xj-E5u"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="latestPostsCollectionView" destination="wp1-Kt-Sb6" id="rCy-mi-clY"/>
+            </connections>
+            <point key="canvasLocation" x="180.43478260869566" y="183.81696428571428"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

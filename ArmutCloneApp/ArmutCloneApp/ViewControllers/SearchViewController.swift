@@ -12,12 +12,18 @@ class SearchViewController: UIViewController {
     var allServicesData : [ServicesModel] = []
     var popularData : [ServicesModel] = []
     var postsData : [PostModel] = []
+    var allPromotionData : [PromotionModel] = [
+        PromotionModel(image: UIImage(named: "evlilik.png")!, title: "FIRST TIME NEWLY WEDS", description: "WEDDING PHOTOGRAPHERS FROM 540 TL", percentageAmout: "-15%", saleText: "İNDİRİM"),
+        PromotionModel(image: UIImage(named: "barmen.jpeg")!, title: "BEST IN TOWN", description: "UNLIMITED COCTAİLS FROM 1440TL NIGHTLY", percentageAmout: "-25%", saleText: "İNDİRİM")
+    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(HeaderTableViewCell.nib(), forCellReuseIdentifier: HeaderTableViewCell.identifier)
         tableView.register(PromotionTableViewCell.nib(), forCellReuseIdentifier: PromotionTableViewCell.identifier)
         tableView.register(AllServicesTableViewCell.nib(), forCellReuseIdentifier: AllServicesTableViewCell.identifier)
+        tableView.register(PopularTableViewCell.nib(), forCellReuseIdentifier: PopularTableViewCell.identifier)
+        tableView.register(LatestPostsTableViewCell.nib(), forCellReuseIdentifier: LatestPostsTableViewCell.identifier)
         fetchData()
     }
     
@@ -67,9 +73,7 @@ extension SearchViewController : UITableViewDelegate, UITableViewDataSource {
             
         case 1 :
             let promotionCell = tableView.dequeueReusableCell(withIdentifier: PromotionTableViewCell.identifier, for: indexPath) as! PromotionTableViewCell
-            promotionCell.loadData(image: UIImage(named: "evlilik.png") ?? .strokedCheckmark,
-                                   title: "FIRST TIME NEWLY WEDS",
-                                   description: "WEDDING PHOTOGRAPHERS FROM 540TL")
+            promotionCell.loadData(data: allPromotionData)
             promotionCell.selectionStyle = .none
             return promotionCell
             
@@ -80,11 +84,13 @@ extension SearchViewController : UITableViewDelegate, UITableViewDataSource {
             return allServicesCell
             
         case 3 :
-            
-            return cell
+            let popularCell = tableView.dequeueReusableCell(withIdentifier: PopularTableViewCell.identifier, for: indexPath) as! PopularTableViewCell
+            popularCell.loadData(data: popularData)
+            return popularCell
         case 4:
-            
-            return cell
+            let latestPostCell = tableView.dequeueReusableCell(withIdentifier: LatestPostsTableViewCell.identifier, for: indexPath) as! LatestPostsTableViewCell
+            latestPostCell.loadData(data: postsData)
+            return latestPostCell
         default:
             break
         }
