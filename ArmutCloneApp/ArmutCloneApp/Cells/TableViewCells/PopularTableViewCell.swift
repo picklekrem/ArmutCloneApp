@@ -15,9 +15,9 @@ class PopularTableViewCell: UITableViewCell {
     }
     
     @IBOutlet weak var popularCollectionView: UICollectionView!
+
     
     var delegate: SelectedServiceIDProtocol? = nil
-    
     var allPopularData : [ServicesModel] = []
     
     override func awakeFromNib() {

@@ -26,8 +26,6 @@ class ServicesCollectionViewCell: UICollectionViewCell {
     }
     func loadData(data : ServicesModel) {
         titleLabel.text = data.name
-//        let imageUrl = URL(string: data.image_url ?? "")
-//        imageView.sd_setImage(with: imageUrl, placeholderImage: UIImage(systemName: "photo.circle"))
     }
 
 }

@@ -84,7 +84,6 @@ extension SearchViewController : UITableViewDelegate, UITableViewDataSource {
         return 5
     }
     
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
         switch indexPath.row {
@@ -123,6 +122,4 @@ extension SearchViewController : UITableViewDelegate, UITableViewDataSource {
     }
     
 }
-
-//getirde ne eksik ne katmak istersin
 
