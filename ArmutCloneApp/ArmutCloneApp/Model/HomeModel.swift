@@ -14,12 +14,14 @@ struct Home : Decodable {
 }
 
 struct ServicesModel : Decodable {
-   let id : Int?
-   let service_id : Int?
-   let name : String?
-   let long_name : String?
-   let image_url : String?
-   let pro_count : Int?
+    let id : Int?
+    let service_id : Int?
+    let name : String?
+    let long_name : String?
+    let image_url : String?
+    let pro_count : Int?
+    let average_rating : Double?
+    let completed_jobs_on_last_month : Int?
 }
 
 struct PostModel : Decodable {

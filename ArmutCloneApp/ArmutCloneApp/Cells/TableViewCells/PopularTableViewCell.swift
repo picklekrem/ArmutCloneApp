@@ -16,6 +16,8 @@ class PopularTableViewCell: UITableViewCell {
     
     @IBOutlet weak var popularCollectionView: UICollectionView!
     
+    var delegate: SelectedServiceIDProtocol? = nil
+    
     var allPopularData : [ServicesModel] = []
     
     override func awakeFromNib() {
@@ -55,7 +57,8 @@ extension PopularTableViewCell : UICollectionViewDelegate, UICollectionViewDeleg
         return CGSize(width: 170, height: 150)
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(allPopularData[indexPath.row].name)
+        let selectedID = allPopularData[indexPath.row].service_id ?? 0
+        self.delegate?.getSelectedSeviceId(serviceID: selectedID)
     }
     
     

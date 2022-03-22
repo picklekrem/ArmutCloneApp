@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol SelectedServiceIDProtocol {
+    func getSelectedSeviceId(serviceID: Int)
+}
+
 class AllServicesTableViewCell: UITableViewCell {
     
     static let identifier = "AllServicesTableViewCell"
@@ -16,9 +20,11 @@ class AllServicesTableViewCell: UITableViewCell {
     
     @IBOutlet weak var allServicesCollectionView: UICollectionView!
     
-//    var allServicesData : ServicesModel?
+    var delegate: SelectedServiceIDProtocol? = nil
+    
     var allServicesData : [ServicesModel] = []
     var iconNameArray: [String] = ["tadilat", "temizlik", "nakliyat", "tamir", "ozel_ders", "saglik", "dugun", "diger"]
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -58,7 +64,8 @@ extension AllServicesTableViewCell : UICollectionViewDataSource, UICollectionVie
         return CGSize(width: 80, height: 80)
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(allServicesData[indexPath.row].name)
+        let selectedID = allServicesData[indexPath.row].service_id ?? 0
+        self.delegate?.getSelectedSeviceId(serviceID: selectedID)
     }
     
 }

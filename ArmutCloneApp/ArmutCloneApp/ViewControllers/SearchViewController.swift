@@ -6,12 +6,15 @@
 //
 
 import UIKit
+import SafariServices
 
-class SearchViewController: UIViewController {
+class SearchViewController: UIViewController, SelectedServiceIDProtocol, SelectedLatestPostProtocol {
+    
     @IBOutlet weak var tableView: UITableView!
     var allServicesData : [ServicesModel] = []
     var popularData : [ServicesModel] = []
     var postsData : [PostModel] = []
+    var detailsData : ServicesModel?
     var allPromotionData : [PromotionModel] = [
         PromotionModel(image: UIImage(named: "evlilik.png")!, title: "FIRST TIME NEWLY WEDS", description: "WEDDING PHOTOGRAPHERS FROM 540 TL", percentageAmout: "-15%", saleText: "İNDİRİM"),
         PromotionModel(image: UIImage(named: "barmen.jpeg")!, title: "BEST IN TOWN", description: "UNLIMITED COCTAİLS FROM 1440TL NIGHTLY", percentageAmout: "-25%", saleText: "İNDİRİM")
@@ -42,20 +45,39 @@ class SearchViewController: UIViewController {
             }
         }
     }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showDetailVC" {
+            if let destination = segue.destination as? DetailsViewController {
+                destination.selectedDetailData = detailsData
+            }
+        }
+    }
     
-//    func servicesData() {
-//        NetworkManager.shared.getServiceDetails(id: 191) { result in
-//            DispatchQueue.main.async {
-//                switch result {
-//                case .success(let model):
-//                    print(model)
-//                case .failure(let error):
-//                    print(error.localizedDescription)
-//                }
-//            }
-//        }
-//    }
-
+    func getSelectedSeviceId(serviceID: Int) {
+        NetworkManager.shared.getServiceDetails(id: serviceID) { result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let model):
+                    if model.id == nil {
+                        self.makeAlert(titleInput: "Hata", messageInput: "Seçtiğiniz hizmet bulunamadı lütfen daha sonra tekrar deneyiniz.")
+                    } else {
+                        self.detailsData = model
+                        DispatchQueue.main.async {
+                            self.performSegue(withIdentifier: "showDetailVC", sender: nil)
+                        }
+                    }
+                    
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
+        }
+    }
+    
+    func getSelectedLatestPost(selectedPost: URL) {
+        let vc = SFSafariViewController(url: selectedPost)
+        present(vc, animated: true)
+    }
 }
 extension SearchViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -80,16 +102,19 @@ extension SearchViewController : UITableViewDelegate, UITableViewDataSource {
         case 2 :
             let allServicesCell = tableView.dequeueReusableCell(withIdentifier: AllServicesTableViewCell.identifier, for: indexPath) as! AllServicesTableViewCell
             allServicesCell.loadData(data: allServicesData)
+            allServicesCell.delegate = self
             allServicesCell.selectionStyle = .none
             return allServicesCell
             
         case 3 :
             let popularCell = tableView.dequeueReusableCell(withIdentifier: PopularTableViewCell.identifier, for: indexPath) as! PopularTableViewCell
             popularCell.loadData(data: popularData)
+            popularCell.delegate = self
             return popularCell
         case 4:
             let latestPostCell = tableView.dequeueReusableCell(withIdentifier: LatestPostsTableViewCell.identifier, for: indexPath) as! LatestPostsTableViewCell
             latestPostCell.loadData(data: postsData)
+            latestPostCell.delegate = self
             return latestPostCell
         default:
             break
@@ -98,4 +123,6 @@ extension SearchViewController : UITableViewDelegate, UITableViewDataSource {
     }
     
 }
+
+//getirde ne eksik ne katmak istersin
 

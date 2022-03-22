@@ -32,6 +32,15 @@ extension UIViewController {
         alert.addAction(okButton)
         self.present(alert, animated: true, completion: nil)
     }
+    
+    func dismissPage() {
+        let transition = CATransition()
+        transition.duration = 0.25
+        transition.type = .push
+        transition.subtype = .fromLeft
+        self.view.window!.layer.add(transition, forKey: kCATransition)
+        dismiss(animated: false)
+    }
 }
 
 extension UIView {
@@ -47,5 +56,13 @@ extension UIView {
         self.layer.shadowOpacity = 1.0
         self.layer.masksToBounds = false
         self.layer.cornerRadius = 4.0
+    }
+    
+    func circleView() {
+        self.layer.cornerRadius = self.frame.size.width/2
+         self.clipsToBounds = true
+
+        self.layer.borderColor = UIColor.black.cgColor
+         self.layer.borderWidth = 2.0
     }
 }

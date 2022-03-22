@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol SelectedLatestPostProtocol {
+    func getSelectedLatestPost(selectedPost: URL)
+}
+
 class LatestPostsTableViewCell: UITableViewCell {
     
     static let identifier = "LatestPostsTableViewCell"
@@ -15,6 +19,9 @@ class LatestPostsTableViewCell: UITableViewCell {
     }
     var allPostDatas : [PostModel] = []
     @IBOutlet weak var latestPostsCollectionView: UICollectionView!
+    
+    var delegate: SelectedLatestPostProtocol? = nil
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -51,7 +58,8 @@ extension LatestPostsTableViewCell : UICollectionViewDelegate, UICollectionViewD
         return CGSize(width: 150, height: 200)
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(allPostDatas[indexPath.row].link)
+        guard let url = URL(string: allPostDatas[indexPath.row].link ?? "") else {return}
+        self.delegate?.getSelectedLatestPost(selectedPost: url)
     }
     
 }
